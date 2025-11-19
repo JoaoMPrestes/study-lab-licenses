@@ -100,17 +100,27 @@ Java
 - javafx.base
 
 ##  Run configuration (Eclipse/IntelliJ) must include:
+
+```bash
 --module-path PATH_TO_FX
 --add-modules javafx.controls,javafx.fxml
+```
 
 ##  📦 Running the Project (CLI)
 🏗 Compile
-javac --module-path "%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml -d out src/gui/*.java
 
-Run
+```bash
+javac --module-path "%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml -d out src/gui/*.java
+```
+
+▶ Run
+
+```bash
 java --module-path "%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml gui.QuizFX
+```
 
 🛠️ Building with Maven
+
 🏗 Compile
 mvn clean compile
 
@@ -123,32 +133,36 @@ mvn jlink:jlink
 📦 Create Windows Installer (.exe)
 mvn jpackage:jpackage
 
-The installer will be generated inside:
+✔ The installer will be generated inside:
 target/jpackage/
+
 
 ##  📜 Adding Questions
 
 Questions follow this format:
 QUESTION | ALTERNATIVE A | ALTERNATIVE B | ALTERNATIVE C | CORRECT_LETTER
+
 Example:
 What is the capital of France? | Paris | Berlin | Rome | A
 
+
 💡 Breaklines (\n) inside questions are supported.
+
+
 
 ##  🔧 Environment Variables (Admin only)
 
 To enable GitHub commits & email notifications:
 
-#######################################################
-| Variable	      | Purpose                           |
--------------------------------------------------------
-| GITHUB_TOKEN	  | Token with repo scope             |
-| GIT_REPO_OWNER  | Your GitHub username              |
-| GIT_REPO_NAME	  | Repository name                   |
-| SMTP_USER	      | Gmail/SMTP username               |
-| SMTP_PASS	      | App password                      |
-| NOTIFY_EMAIL_TO	| Email that receives notifications |
-########################################################
+| Variable | Purpose |
+| :--- | :--- |
+| **GITHUB_TOKEN** | Token with repo scope |
+| **GIT_REPO_OWNER** | Your GitHub username |
+| **GIT_REPO_NAME** | Repository name |
+| **SMTP_USER** | Gmail/SMTP username |
+| **SMTP_PASS** | App password |
+| **NOTIFY_EMAIL_TO** | Email that receives notifications |
+
 
 ##  📬 Activation Email Example
 StudyLab activation granted
@@ -166,9 +180,13 @@ Do not redistribute without authorization.
 ##  🙌 Contribution
 
 Pull requests are welcome for:
+
 ✅ New themes
+
 ✅ Bug fixes
+
 ✅ Improvements to UI components
+
 ✅ Documentation enhancements
 
 ##  💡 About

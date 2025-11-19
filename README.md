@@ -37,24 +37,24 @@ Prevents uncontrolled distribution by using:
 ## 📁 Project Structure
 src/
 └── gui/
-├── QuizFX.java
-├── SplashScreen.java
-├── Configuracoes.java
-├── ConfiguracoesData.java
-├── LicenseManager.java
-├── style.css
-├── styles/
-│ └── style-base.css
-└── themes/
-├── dark.css
-├── light.css
-├── dracula.css
-├── neon.css
-├── ocean.css
-├── matrix.css
-├── solarized-dark.css
-├── solarized-light.css
-└── custom.css
+    ├── QuizFX.java
+    ├── SplashScreen.java
+    ├── Configuracoes.java
+    ├── ConfiguracoesData.java
+    ├── LicenseManager.java
+    ├── style.css
+    ├── styles/
+    │   └── style-base.css
+    └── themes/
+        ├── dark.css
+        ├── light.css
+        ├── dracula.css
+        ├── neon.css
+        ├── ocean.css
+        ├── matrix.css
+        ├── solarized-dark.css
+        ├── solarized-light.css
+        └── custom.css
 
 ---
 
@@ -62,16 +62,16 @@ src/
 
 StudyLab contains a built-in **LicenseManager** that automatically controls usage.
 
-### How activation works:
-1. On startup, StudyLab generates a stable **machine ID**.
+### ✔ Activation flow:
+1. Program generates a stable Machine ID.
 2. It fetches `licenses.json` from GitHub.
 3. If `active.length < maxLicenses`, activation succeeds.
 4. The machine ID is added to `active[]`.
 5. The updated file is committed back to GitHub automatically.
 6. (Optional) An email is sent to the admin notifying activation.
 
-### How release works:
-When the app closes:
+### ✔ Deactivation flow
+On exit:
 - The machine ID is removed from `active[]`.
 - GitHub receives an updated commit.
 - Admin receives email (optional).
@@ -90,47 +90,65 @@ When the app closes:
 ###  🖥️ Requirements
 Java
 
-JDK 21 recommended
+☕ Java
+- JDK 21 recommended (required for JPackage/JLink)
 
-JavaFX
-
-Standalone JARs required:
-
-javafx.controls
-
-javafx.fxml
-
-javafx.graphics
-
-javafx.base
+🎬 JavaFX Modules
+- javafx.controls
+- javafx.fxml
+- javafx.graphics
+- javafx.base
 
 ##  Run configuration (Eclipse/IntelliJ) must include:
 --module-path PATH_TO_FX
 --add-modules javafx.controls,javafx.fxml
 
-##  📦 Running the Project
-Compile & Run (CLI)
+##  📦 Running the Project (CLI)
+🏗 Compile
 javac --module-path "%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml -d out src/gui/*.java
+
+Run
 java --module-path "%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml gui.QuizFX
+
+🛠️ Building with Maven
+🏗 Compile
+mvn clean compile
+
+▶ Run (using JavaFX)
+mvn javafx:run
+
+⚙ Create Custom Runtime (JLink)
+mvn jlink:jlink
+
+📦 Create Windows Installer (.exe)
+mvn jpackage:jpackage
+
+The installer will be generated inside:
+target/jpackage/
 
 ##  📜 Adding Questions
 
 Questions follow this format:
 QUESTION | ALTERNATIVE A | ALTERNATIVE B | ALTERNATIVE C | CORRECT_LETTER
+Example:
 What is the capital of France? | Paris | Berlin | Rome | A
-Breaklines (\n) inside questions are supported.
+
+💡 Breaklines (\n) inside questions are supported.
 
 ##  🔧 Environment Variables (Admin only)
 
 To enable GitHub commits & email notifications:
 
-Variable	Purpose
-GITHUB_TOKEN	Token with repo scope
-GIT_REPO_OWNER	Your GitHub username
-GIT_REPO_NAME	Repository name
-SMTP_USER	Gmail/SMTP username
-SMTP_PASS	App password
-NOTIFY_EMAIL_TO	Email that receives notifications
+#######################################################
+| Variable	      | Purpose                           |
+-------------------------------------------------------
+| GITHUB_TOKEN	  | Token with repo scope             |
+| GIT_REPO_OWNER  | Your GitHub username              |
+| GIT_REPO_NAME	  | Repository name                   |
+| SMTP_USER	      | Gmail/SMTP username               |
+| SMTP_PASS	      | App password                      |
+| NOTIFY_EMAIL_TO	| Email that receives notifications |
+########################################################
 
 ##  📬 Activation Email Example
 StudyLab activation granted
@@ -138,10 +156,7 @@ Machine ID: A1B2-C3D4-E5F6
 Timestamp: 2025-11-18 14:02
 
 ##  📷 Screenshots (add after running)
-![splash](images/splash.png)
-![config](images/config.png)
-![quiz](images/quiz.png)
-![theme-selector](images/themes.png)
+add later xd
 
 ##   ⚖️ License
 
@@ -151,14 +166,10 @@ Do not redistribute without authorization.
 ##  🙌 Contribution
 
 Pull requests are welcome for:
-
-New themes
-
-Bug fixes
-
-Improvements to UI components
-
-Documentation enhancements
+✅ New themes
+✅ Bug fixes
+✅ Improvements to UI components
+✅ Documentation enhancements
 
 ##  💡 About
 
